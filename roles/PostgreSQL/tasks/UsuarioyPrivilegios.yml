@@ -1,0 +1,22 @@
+---
+# CREAR EL USUARIO ADMIN DE LA BBDD CREADA
+
+- name: Crear usuario
+  community.postgresql.postgresql_user:
+    state: present # absent
+    name: "{{ db_user }}"
+    password: "{{ db_password }}"
+  become: true
+  become_user: postgres
+
+# ELEVAR SUS PRIVILEGIOS
+
+- name: Elevar privilegios
+  community.postgresql.postgresql_privs:
+    type: database
+    database: "{{ db_name }}"
+    roles: "{{ db_user }}"
+    grant_option: false
+    privs: all # Podemos definir también privilegios en concreto
+  become: true
+  become_user: postgres
