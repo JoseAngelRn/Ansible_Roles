@@ -20,3 +20,5 @@
     privs: all # Podemos definir también privilegios en concreto
   become: true
   become_user: postgres
+  notify:
+    - Restart_PostgreSQL
