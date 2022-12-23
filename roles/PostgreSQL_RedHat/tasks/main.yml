@@ -1,0 +1,12 @@
+---
+#INSTALACIÓN DE POSTGRESQL
+
+- include: instalar_postgreSQL.yml
+
+#CREAR UNA BBDD Y HACEMOS UNA COPIA DE SEGURIDAD DE ELLA
+
+- include: crearBBDDyBackup.yml
+
+#CREA UN USUAIO ADMIN PARA LA BBDD Y ELEVAR SUS PRIVILEGIOS
+
+- include: UsuarioyPrivilegios.yml

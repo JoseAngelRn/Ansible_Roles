@@ -1,0 +1,26 @@
+---
+- name: Instalar paquetes
+  ansible.builtin.yum:
+    name:
+      - postgresql
+      - postgresql-server
+      - postgresql-contrib
+      - postgresql-libs
+      - python3-psycopg2
+    state: present
+
+- name: Comprobar si PostgreSQL esta iniciado
+  ansible.builtin.stat:
+    path: "{{ postgresql_data_dir }}/pg_hba.conf"
+  register: postgres_data
+
+- name: Iniciar PostgreSQL
+  ansible.builtin.shell: "postgresql-setup initdb"
+  become_user: postgres
+  when: not postgres_data.stat.exists
+
+- name: Iniciar y habilitar el servicio
+  ansible.builtin.service:
+    name: postgresql
+    state: started
+    enabled: true

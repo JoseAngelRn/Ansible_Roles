@@ -1,0 +1,11 @@
+---
+postgresql_data_dir: "/var/lib/pgsql/data"
+ansible_ssh_pipelining: true
+# Nombre de la BBDD
+db_name: "BBDD_prueba"
+# Directorio donde se hará el backup
+backup_dir: "/backups"
+#  Nombre usuario admin
+db_user: "admin"
+# Contraseña del usuario admin
+db_password: "12345Ab##"
