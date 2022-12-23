@@ -3,4 +3,4 @@
   hosts: 192.168.19.143
   become: true
   roles:
-    - PostgreSQL_Ubuntu_RedHat
+    - PostgreSQL_RedHat
