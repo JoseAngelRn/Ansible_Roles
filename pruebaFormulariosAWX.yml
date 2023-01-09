@@ -1,0 +1,10 @@
+---
+- name: Crear un documento
+  hosts: all
+  vars:
+    myfile: "~/example.txt"
+  tasks:
+    - name: Crear un nuevo documento
+      ansible.builtin.file:
+        path: "{{ myfile }}"
+        state: touch
